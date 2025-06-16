@@ -16,6 +16,7 @@ import Password from "@/components/Password";
 import Annoucement from "@/components/Annoucement";
 import Share from "@/components/Share";
 import DailyWheel from "./DailyWheel";
+import DailyWheelWin from "./LogicWheel";
 
 const Footer = () => {
   const [open, setOpen] = useState(false);
@@ -72,7 +73,7 @@ const Footer = () => {
       ModalContent = <Share />;
       break;
     case "OPEN WHEEL":
-      ModalContent = <Share />;
+      ModalContent = <DailyWheelWin  />;
       break;
     default:
       ModalContent = null; // No modal content by default

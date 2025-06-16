@@ -15,7 +15,7 @@ export default async function RootLayout({ children }) {
         fill
         alt="bg"
         priority={true}
-        objectFit="cover"
+      
         quality={100}
         objectPosition="center"
         className="z-[-2]"

@@ -25,9 +25,10 @@ const Modal = ({
   }, []);
 
   const handleClick = () => {
+    console.log("we clicked")
     setModalType("");
     setOpen(false);
-  };
+  };  
 
   if (!isOpen) {
     return null;
