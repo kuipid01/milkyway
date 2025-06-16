@@ -25,10 +25,10 @@ const Modal = ({
   }, []);
 
   const handleClick = () => {
-    console.log("we clicked")
+    console.log("we clicked");
     setModalType("");
     setOpen(false);
-  };  
+  };
 
   if (!isOpen) {
     return null;
@@ -37,7 +37,7 @@ const Modal = ({
   return isOnClient
     ? ReactDOM.createPortal(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00000096] z-[999]">
-          <div className="w-[65%] h-auto relative animate-popup ">
+          <div className="w-[65%] min-h-[500px] h-auto relative animate-popup ">
             <svg
               width="1393"
               height="771"

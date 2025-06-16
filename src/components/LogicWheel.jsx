@@ -4,14 +4,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import EventEmitter from "eventemitter3";
 import "../css/dailywheel.css";
-import dynamic from "next/dynamic";
-// Dynamically import the Application component to avoid SSR issues
-const Application = dynamic(
-  () => import("@pixi/react").then((mod) => mod.Application),
-  {
-    ssr: false,
-  }
-);
 
 const PAGE_SIZE_DEFAULT = {
   width: 1920,
@@ -133,58 +125,56 @@ const DailyWheelWin = ({ onClose }) => {
   };
 
   return (
-    <Application>
-      <div className="modal-window-dailyw">
-        <div className="modal-window-dailyw__scale-cont">
-          <img
-            src="/wheel/wheel_title.png"
-            alt="daily wheel"
-            className="modal-window-dailyw__title"
-          />
-
-          <div className="modal-window-dailyw__wheel-container">
-            <div className="modal-window-dailyw__wheel" ref={wheelRef}>
-              <img src="/wheel/wheel.png" alt="wheel" />
-              {list.map((item, index) => (
-                <div
-                  key={index}
-                  className="modal-window-dailyw__wheel_price"
-                  style={{
-                    transform: `translateY(-50%) rotate(${item.textDeg}deg)`,
-                  }}
-                >
-                  <span>$ {item.value}</span>
-                </div>
-              ))}
-            </div>
-            <img
-              className={`modal-window-dailyw__spin ${
-                wheelLoading ? "disabled" : ""
-              }`}
-              src="/wheel/wheel_button.png"
-              alt="spin"
-              onClick={() => {
-                if (!wheelLoading) {
-                  setWheelLoading(true);
-                  handleSpin();
-                }
-              }}
-            />
-            <img
-              className="modal-window-dailyw__pin"
-              src="/wheel/wheel_pin.png"
-              alt="pin"
-            />
-          </div>
-        </div>
+    <div className="modal-window-dailyw   ">
+      <div className="modal-window-dailyw__scale-cont  ">
         <img
-          src="/cross_icon.png"
-          alt="register title"
-          className="modal-window-dailyw__cross_icon"
-          onClick={handleClose}
+          src="/wheel/wheel_title.png"
+          alt="daily wheel"
+          className="modal-window-dailyw__title"
         />
+
+        <div className="modal-window-dailyw__wheel-container">
+          <div className="modal-window-dailyw__wheel" ref={wheelRef}>
+            <img src="/wheel/wheel.png" alt="wheel" />
+            {list.map((item, index) => (
+              <div
+                key={index}
+                className="modal-window-dailyw__wheel_price"
+                style={{
+                  transform: `translateY(-50%) rotate(${item.textDeg}deg)`,
+                }}
+              >
+                <span>$ {item.value}</span>
+              </div>
+            ))}
+          </div>
+          <img
+            className={`modal-window-dailyw__spin ${
+              wheelLoading ? "disabled" : ""
+            }`}
+            src="/wheel/wheel_button.png"
+            alt="spin"
+            onClick={() => {
+              if (!wheelLoading) {
+                setWheelLoading(true);
+                handleSpin();
+              }
+            }}
+          />
+          <img
+            className="modal-window-dailyw__pin"
+            src="/wheel/wheel_pin.png"
+            alt="pin"
+          />
+        </div>
       </div>
-    </Application>
+      <img
+        src="/cross_icon.png"
+        alt="register title"
+        className="modal-window-dailyw__cross_icon"
+        onClick={handleClose}
+      />
+    </div>
   );
 };
 

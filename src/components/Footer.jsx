@@ -73,7 +73,15 @@ const Footer = () => {
       ModalContent = <Share />;
       break;
     case "OPEN WHEEL":
-      ModalContent = <DailyWheelWin  />;
+      ModalContent = (
+        <DailyWheelWin
+          onClose={() => {
+            console.log("clicke");
+            setOpen(false);
+            setModalType("");
+          }}
+        />
+      );
       break;
     default:
       ModalContent = null; // No modal content by default
@@ -16344,7 +16352,6 @@ const Footer = () => {
         </Carousel>
 
         <div className="flex justify-evenly w-[30%] h-[95%]">
-        
           <button
             className="w-[35%]  ml-[50px] -translate-y-[10px] pb-[50px] h-full "
             onClick={() => handleModalOpen("OPEN WHEEL")}
@@ -16438,14 +16445,16 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <Modal
-        isOpen={open}
-        setOpen={setOpen}
-        modalType={modalType}
-        setModalType={setModalType}
-      >
-        {ModalContent}
-      </Modal>
+  
+        <Modal
+          isOpen={open}
+          setOpen={setOpen}
+          modalType={modalType}
+          setModalType={setModalType}
+        >
+          {ModalContent}
+        </Modal>
+      
     </footer>
   );
 };
