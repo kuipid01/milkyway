@@ -42,7 +42,8 @@ const Games = ({ data }) => {
 
   return (
     <div className="Carousel relative">
-      <Sidebar />
+    <Sidebar />
+      
       <Carousel className="w-[100%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[52vw] sm:min-h-[37vw]">
           <GamesGrid data={data} />
